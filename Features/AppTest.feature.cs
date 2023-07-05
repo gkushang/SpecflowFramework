@@ -104,7 +104,7 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.When("I fill Input field \"987654321\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 10
- testRunner.Then("I wait for 3 Seconds", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("I wait for 1 Seconds", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();

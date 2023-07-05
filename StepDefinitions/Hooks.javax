@@ -1,29 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using AventStack.ExtentReports;
+using AventStack.ExtentReports.Gherkin.Model;
 using BoDi;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
-using TechTalk.SpecFlow;
-using System.Threading.Tasks;
-using NUnit.Framework;
-using System.Net.Mail;
-using System.Drawing;
-using AventStack.ExtentReports.Gherkin.Model;
-using AventStack.ExtentReports;
+using SpecFlowFramework.Utils;
 using SpecFlowFramework.Utils;
 
-namespace SpecFlowFramework.Drivers
+namespace SpecFlowFramework.Hooks
 {
-
-
     [Binding]
-    public class Hooks : ExtentReport
+    public sealed class Hooks : ExtentReport
     {
         private readonly IObjectContainer _container;
-        private IWebDriver _driver;
-
 
         public Hooks(IObjectContainer container)
         {
@@ -48,65 +36,44 @@ namespace SpecFlowFramework.Drivers
         public static void BeforeFeature(FeatureContext featureContext)
         {
             Console.WriteLine("Running before feature...");
-            TestEnvironments.Environments.Load();
             _feature = _extentReports.CreateTest<Feature>(featureContext.FeatureInfo.Title);
         }
 
-
-
-
-        [BeforeScenario]
-        public void InitializeWebDriver(ScenarioContext scenarioContext)
+        [AfterFeature]
+        public static void AfterFeature()
         {
-            ChromeOptions options = new ChromeOptions();
-            _driver = new ChromeDriver(options);
-            _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10); // Set the desired wait time
+            Console.WriteLine("Running after feature...");
+        }
 
-            _container.RegisterInstanceAs(_driver);
+        [BeforeScenario("@Testers")]
+        public void BeforeScenarioWithTag()
+        {
+            Console.WriteLine("Running inside tagged hooks in specflow");
+        }
+
+        [BeforeScenario(Order = 1)]
+        public void FirstBeforeScenario(ScenarioContext scenarioContext)
+        {
+            Console.WriteLine("Running before scenario...");
+            IWebDriver driver = new ChromeDriver();
+            driver.Manage().Window.Maximize();
+
+            _container.RegisterInstanceAs<IWebDriver>(driver);
 
             _scenario = _feature.CreateNode<Scenario>(scenarioContext.ScenarioInfo.Title);
         }
 
         [AfterScenario]
-        public void CleanupWebDriver(ScenarioContext scenarioContext)
+        public void AfterScenario()
         {
-            try
+            Console.WriteLine("Running after scenario...");
+            var driver = _container.Resolve<IWebDriver>();
+
+            if (driver != null)
             {
-                //if (scenarioContext.TestError != null)
-                //{
-                /*
-                string timestamp = DateTime.Now.ToString("yyyyMMdd_HHmmss");
-                string screenshotFileName = $"screenshot_{timestamp}.png";
-
-
-                long totalHeight = (long)((IJavaScriptExecutor)_driver).ExecuteScript("return document.body.scrollHeight");
-
-
-                _driver.Manage().Window.Size = new Size(1920, (int)totalHeight);
-
-
-                Screenshot screenshot = ((ITakesScreenshot)_driver).GetScreenshot();
-
-
-                string screenshotFilePath = Path.Combine(Directory.GetCurrentDirectory(), screenshotFileName);
-                screenshot.SaveAsFile(screenshotFilePath, ScreenshotImageFormat.Png);
-
-
-                var scenarioName = scenarioContext.ScenarioInfo.Title;
-                var attachment = new Attachment(screenshotFilePath, "Scenario Failure Screenshot");
-                scenarioContext.Add("screenshot", screenshot.AsBase64EncodedString);
-                scenarioContext.ScenarioContainer.RegisterInstanceAs(attachment);
-
-                //}*/
-
-            }
-            finally
-            {
-
-                _driver?.Quit();
+                driver.Quit();
             }
         }
-
 
         [AfterStep]
         public void AfterStep(ScenarioContext scenarioContext)

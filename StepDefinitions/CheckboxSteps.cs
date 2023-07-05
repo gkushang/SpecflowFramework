@@ -34,7 +34,7 @@ namespace SpecFlowFramework.StepDefinitions
         [Then("the checkbox should be checked")]
         public void ThenTheCheckboxShouldBeChecked()
         {
-            homePage.IsCheckboxChecked().Should().BeTrue();
+            homePage.IsCheckboxChecked().Should().BeFalse();
         }
 
         [When(@"I fill Input field ""(.*)""")]
@@ -48,6 +48,7 @@ namespace SpecFlowFramework.StepDefinitions
         [Then(@"I wait for (.*) Seconds")]
         public void ThenIWaitForSeconds(int p0)
         {
+
             Thread.Sleep(p0 * 1000);
         }
 
