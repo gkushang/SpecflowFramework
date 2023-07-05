@@ -34,7 +34,7 @@ namespace SpecFlowFramework.StepDefinitions
         [Then("the checkbox should be checked")]
         public void ThenTheCheckboxShouldBeChecked()
         {
-            homePage.IsCheckboxChecked().Should().BeFalse();
+            homePage.IsCheckboxChecked().Should().BeTrue();
         }
 
         [When(@"I fill Input field ""(.*)""")]

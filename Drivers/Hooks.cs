@@ -70,41 +70,10 @@ namespace SpecFlowFramework.Drivers
         [AfterScenario]
         public void CleanupWebDriver(ScenarioContext scenarioContext)
         {
-            try
-            {
-                //if (scenarioContext.TestError != null)
-                //{
-                /*
-                string timestamp = DateTime.Now.ToString("yyyyMMdd_HHmmss");
-                string screenshotFileName = $"screenshot_{timestamp}.png";
 
 
-                long totalHeight = (long)((IJavaScriptExecutor)_driver).ExecuteScript("return document.body.scrollHeight");
+            _driver?.Quit();
 
-
-                _driver.Manage().Window.Size = new Size(1920, (int)totalHeight);
-
-
-                Screenshot screenshot = ((ITakesScreenshot)_driver).GetScreenshot();
-
-
-                string screenshotFilePath = Path.Combine(Directory.GetCurrentDirectory(), screenshotFileName);
-                screenshot.SaveAsFile(screenshotFilePath, ScreenshotImageFormat.Png);
-
-
-                var scenarioName = scenarioContext.ScenarioInfo.Title;
-                var attachment = new Attachment(screenshotFilePath, "Scenario Failure Screenshot");
-                scenarioContext.Add("screenshot", screenshot.AsBase64EncodedString);
-                scenarioContext.ScenarioContainer.RegisterInstanceAs(attachment);
-
-                //}*/
-
-            }
-            finally
-            {
-
-                _driver?.Quit();
-            }
         }
 
 
@@ -118,25 +87,25 @@ namespace SpecFlowFramework.Drivers
             var driver = _container.Resolve<IWebDriver>();
 
             //When scenario passed
-            if (scenarioContext.TestError == null)
+            //  if (scenarioContext.TestError == null)
+            //{
+            if (stepType == "Given")
             {
-                if (stepType == "Given")
-                {
-                    _scenario.CreateNode<Given>(stepName);
-                }
-                else if (stepType == "When")
-                {
-                    _scenario.CreateNode<When>(stepName);
-                }
-                else if (stepType == "Then")
-                {
-                    _scenario.CreateNode<Then>(stepName);
-                }
-                else if (stepType == "And")
-                {
-                    _scenario.CreateNode<And>(stepName);
-                }
+                _scenario.CreateNode<Given>(stepName);
             }
+            else if (stepType == "When")
+            {
+                _scenario.CreateNode<When>(stepName);
+            }
+            else if (stepType == "Then")
+            {
+                _scenario.CreateNode<Then>(stepName);
+            }
+            else if (stepType == "And")
+            {
+                _scenario.CreateNode<And>(stepName);
+            }
+            //}
 
             //When scenario fails
             if (scenarioContext.TestError != null)

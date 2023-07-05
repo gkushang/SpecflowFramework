@@ -20,24 +20,24 @@ namespace SpecFlowFramework.Features
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.9.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("App Test")]
-    [NUnit.Framework.CategoryAttribute("myfeature1")]
-    public partial class AppTestFeature
+    [NUnit.Framework.DescriptionAttribute("App Test2")]
+    [NUnit.Framework.CategoryAttribute("myfeature")]
+    public partial class AppTest2Feature
     {
         
         private TechTalk.SpecFlow.ITestRunner testRunner;
         
         private static string[] featureTags = new string[] {
-                "myfeature1"};
+                "myfeature"};
         
-#line 1 "AppTest.feature"
+#line 1 "AppTest2.feature"
 #line hidden
         
         [NUnit.Framework.OneTimeSetUpAttribute()]
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "App Test", null, ProgrammingLanguage.CSharp, featureTags);
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "App Test2", null, ProgrammingLanguage.CSharp, featureTags);
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -76,14 +76,14 @@ namespace SpecFlowFramework.Features
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Test the App")]
-        [NUnit.Framework.CategoryAttribute("mytag")]
-        public void TestTheApp()
+        [NUnit.Framework.DescriptionAttribute("Test the App3")]
+        [NUnit.Framework.CategoryAttribute("mytag3")]
+        public void TestTheApp3()
         {
             string[] tagsOfScenario = new string[] {
-                    "mytag"};
+                    "mytag3"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Test the App", null, tagsOfScenario, argumentsOfScenario, featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Test the App3", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 5
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -101,7 +101,7 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.Then("the checkbox should be checked", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
 #line 9
- testRunner.When("I fill Input field \"987654321\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("I fill Input field \"123\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 10
  testRunner.Then("I wait for 1 Seconds", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
@@ -111,14 +111,14 @@ this.ScenarioInitialize(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Test the App2")]
-        [NUnit.Framework.CategoryAttribute("mytag2")]
-        public void TestTheApp2()
+        [NUnit.Framework.DescriptionAttribute("Test the App4")]
+        [NUnit.Framework.CategoryAttribute("mytag4")]
+        public void TestTheApp4()
         {
             string[] tagsOfScenario = new string[] {
-                    "mytag2"};
+                    "mytag4"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Test the App2", null, tagsOfScenario, argumentsOfScenario, featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Test the App4", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 14
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -136,7 +136,7 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.Then("the checkbox should be checked", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
 #line 18
- testRunner.When("I fill Input field \"987654321\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("I fill Input field \"456\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 19
  testRunner.Then("I wait for 1 Seconds", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");

@@ -1,19 +1,19 @@
-﻿@myfeature1
-Feature: App Test
+﻿@myfeature
+Feature: App Test2
 
-@mytag
-Scenario: Test the App
+@mytag3
+Scenario: Test the App3
 
 	When I check the checkbox
 	Then the checkbox should be checked
-	When I fill Input field "987654321"
+	When I fill Input field "123"
 	Then I wait for 1 Seconds
 
 
-@mytag2
-Scenario: Test the App2
+@mytag4
+Scenario: Test the App4
 
 	When I check the checkbox
 	Then the checkbox should be checked
-	When I fill Input field "987654321"
+	When I fill Input field "456"
 	Then I wait for 1 Seconds
