@@ -13,7 +13,7 @@ namespace SpecFlowFramework.Pages
 
         public HomePage(IWebDriver driver) : base(driver) { }
         public IWebElement Checkbox_1 => Driver.FindElement(By.CssSelector("input[type=\"checkbox\"]"));
-        public IWebElement CheckboxLink => Driver.FindElement(By.CssSelector("a[href=\"/checkboxesaaa\"]"));
+        public IWebElement CheckboxLink => Driver.FindElement(By.CssSelector("a[href=\"/checkboxes\"]"));
         public IWebElement Inputs => Driver.FindElement(By.CssSelector("a[href=\"/inputs\"]"));
         public IWebElement InputField => Driver.FindElement(By.CssSelector("input"));
 
